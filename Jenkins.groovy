@@ -12,8 +12,8 @@ pipeline {
                         passwordVariable: 'password')
                     ]) {
                         try {
-                            sh "echo '${password}' | sudo -S docker stop isng"
-                            sh "echo '${password}' | sudo -S docker container rm isng"
+                            sh "echo '${password}' | sudo -S docker stop dmitry_bor"
+                            sh "echo '${password}' | sudo -S docker container rm dmitry_bor"
                         } catch (Exception e) {
                             print 'Container not exist'
                         }
@@ -41,7 +41,7 @@ pipeline {
                     ]) {
 
                         sh "echo '${password}' | sudo -S docker build ${WORKSPACE}/auto -t dmitry_bor"
-                        sh "echo '${password}' | sudo -S docker run -d -p 0171:80 --name isng -v /home/adminci/is_mount_dir:/stat dmitry_bor"
+                        sh "echo '${password}' | sudo -S docker run -d -p 0171:80 --name dmitry_bor -v /home/adminci/is_mount_dir:/stat dmitry_bor"
                     }
                 }
             }
@@ -55,8 +55,8 @@ pipeline {
                         passwordVariable: 'password')
                     ]) {
                         
-                        sh "echo '${password}' | sudo -S docker exec -t isng bash -c 'df -h > /stat/statistics.txt'"
-                        sh "echo '${password}' | sudo -S docker exec -t isng bash -c 'top -n 1 -b >> /stat/statistics.txt'"
+                        sh "echo '${password}' | sudo -S docker exec -t dmitry_bor bash -c 'df -h > /stat/statistics.txt'"
+                        sh "echo '${password}' | sudo -S docker exec -t dmitry_bor bash -c 'top -n 1 -b >> /stat/statistics.txt'"
                     }
                 }
             }
