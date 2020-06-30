@@ -47,7 +47,7 @@ pipeline {
                 }
             }
         }
-        stage(stop)
+        stage('stop')
         {
             steps{
                 script{
