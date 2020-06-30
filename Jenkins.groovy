@@ -16,6 +16,7 @@ pipeline {
                             sh "echo '${password}' | sudo -S docker container rm dmitry_bor"
                         } catch (Exception e) {
                             print 'Container not exist'
+                            currentBuild.result = 'FAILURE'
                         }
                     }
                 }
@@ -40,8 +41,8 @@ pipeline {
                         passwordVariable: 'password')
                     ]) {
 
-                        //sh "echo '${password}' | sudo -S docker build ${WORKSPACE}/auto -t dmitry_bor"
-                        //sh "echo '${password}' | sudo -S docker run -d -p 0174:80 --name dmitry_bor -v /home/adminci/is_mount_dir:/stat dmitry_bor"
+                        sh "echo '${password}' | sudo -S docker build ${WORKSPACE}/auto -t dmitry_bor"
+                        sh "echo '${password}' | sudo -S docker run -d -p 0174:80 --name dmitry_bor -v /home/adminci/is_mount_dir:/stat dmitry_bor"
                     }
                 }
             }
