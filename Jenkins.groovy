@@ -56,7 +56,7 @@ pipeline {
                         usernameVariable: 'username',
                         passwordVariable: 'password')
                     ]) {
-                sh sudo -S docker stop dmitry_bor"
+                sh "echo '${password}' | sudo -S docker stop dmitry_bor"
                 }
             }
         }
