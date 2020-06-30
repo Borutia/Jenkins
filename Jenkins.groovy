@@ -27,7 +27,7 @@ pipeline {
                               extensions                       : [[$class           : 'RelativeTargetDirectory',
                                                                    relativeTargetDir: 'auto']],
                               submoduleCfg                     : [],
-                              userRemoteConfigs                : [[credentialsId: 'IvanSitnikovGit', url: 'https://github.com/sitozzz/jenkins_education.git']]])
+                              userRemoteConfigs                : [[credentialsId: 'Dmitry_Bor', url: 'https://github.com/Borutia/Jenkins.git']]])
                 }
             }
         }
@@ -41,7 +41,7 @@ pipeline {
                     ]) {
 
                         sh "echo '${password}' | sudo -S docker build ${WORKSPACE}/auto -t ivan_sitnikov_nginx"
-                        sh "echo '${password}' | sudo -S docker run -d -p 8123:80 --name isng -v /home/adminci/is_mount_dir:/stat ivan_sitnikov_nginx"
+                        sh "echo '${password}' | sudo -S docker run -d -p 0001:80 --name isng -v /home/adminci/is_mount_dir:/stat ivan_sitnikov_nginx"
                     }
                 }
             }
