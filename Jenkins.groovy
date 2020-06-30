@@ -60,6 +60,7 @@ pipeline {
                 }
             }
         }
+        }
         stage ('Get stats & write to file'){
             steps{
                 script{
