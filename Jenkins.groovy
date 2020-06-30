@@ -41,7 +41,7 @@ pipeline {
                     ]) {
 
                         sh "echo '${password}' | sudo -S docker build ${WORKSPACE}/auto -t dmitry_bor"
-                        sh "echo '${password}' | sudo -S docker run -d -p 0171:80 --name dmitry_bor -v /home/adminci/is_mount_dir:/stat dmitry_bor"
+                        sh "echo '${password}' | sudo -S docker run -d -p 0174:80 --name dmitry_bor -v /home/adminci/is_mount_dir:/stat dmitry_bor"
                     }
                 }
             }
