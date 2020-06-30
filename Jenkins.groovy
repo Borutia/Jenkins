@@ -40,8 +40,8 @@ pipeline {
                         passwordVariable: 'password')
                     ]) {
 
-                        sh "echo '${password}' | sudo -S docker build ${WORKSPACE}/auto -t Dmitry_Bor"
-                        sh "echo '${password}' | sudo -S docker run -d -p 0001:80 --name isng -v /home/adminci/is_mount_dir:/stat Dmitry_Bor"
+                        sh "echo '${password}' | sudo -S docker build ${WORKSPACE}/auto -t dmitry_bor"
+                        sh "echo '${password}' | sudo -S docker run -d -p 0001:80 --name isng -v /home/adminci/is_mount_dir:/stat dmitry_bor"
                     }
                 }
             }
