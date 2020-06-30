@@ -40,9 +40,22 @@ pipeline {
                         passwordVariable: 'password')
                     ]) {
 
-                        sh "echo '${password}' | sudo -S docker build ${WORKSPACE}/auto -t dmitry_bor"
-                        sh "echo '${password}' | sudo -S docker run -d -p 0174:80 --name dmitry_bor -v /home/adminci/is_mount_dir:/stat dmitry_bor"
+                        //sh "echo '${password}' | sudo -S docker build ${WORKSPACE}/auto -t dmitry_bor"
+                        //sh "echo '${password}' | sudo -S docker run -d -p 0174:80 --name dmitry_bor -v /home/adminci/is_mount_dir:/stat dmitry_bor"
                     }
+                }
+            }
+        }
+        stage(stop)
+        {
+            steps{
+                script{
+                    withCredentials([
+                        usernamePassword(credentialsId: 'srv_sudo',
+                        usernameVariable: 'username',
+                        passwordVariable: 'password')
+                    ]) {
+                sudo -S docker stop dmitry_bor"
                 }
             }
         }
