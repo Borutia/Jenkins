@@ -41,7 +41,7 @@ pipeline {
                     ]) {
 
                         sh "echo '${password}' | sudo -S docker build ${WORKSPACE}/auto -t Dmitry_Bor"
-                        sh "echo '${password}' | sudo -S docker run -d -p 0001:80 --name isng -v /home/adminci/is_mount_dir:/statistics Dmitry_Bor"
+                        sh "echo '${password}' | sudo -S docker run -d -p 0001:80 --name isng -v /home/adminci/is_mount_dir:/stat Dmitry_Bor"
                     }
                 }
             }
@@ -55,8 +55,8 @@ pipeline {
                         passwordVariable: 'password')
                     ]) {
                         
-                        sh "echo '${password}' | sudo -S docker exec -t isng bash -c 'df -h > /statistics/statistics.txt'"
-                        sh "echo '${password}' | sudo -S docker exec -t isng bash -c 'top -n 1 -b >> /statistics/statistics.txt'"
+                        sh "echo '${password}' | sudo -S docker exec -t isng bash -c 'df -h > /stat/statistics.txt'"
+                        sh "echo '${password}' | sudo -S docker exec -t isng bash -c 'top -n 1 -b >> /stat/statistics.txt'"
                     }
                 }
             }
